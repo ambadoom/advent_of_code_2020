@@ -37,6 +37,7 @@ fn map_cell<F: FnMut((usize, usize), Cell) -> Cell>(world: &World, mut f: F) -> 
         }).collect()
 }
 
+#[allow(unused)]
 fn show(world: &World) -> String {
     let mut out = String::new();
     for row in world.iter() {
@@ -142,7 +143,7 @@ fn find_stable<F: Fn(&World) -> World>(world_in: &World, step: F) -> usize {
 fn main() {
     let input = input::read_all(11);
 
-    let mut world: Vec<Vec<Cell>> = input
+    let world: Vec<Vec<Cell>> = input
         .lines()
         .map(|line| line.chars().map(Cell::from_char).collect())
         .collect();
