@@ -21,20 +21,18 @@ fn main() {
         .unwrap()
         .split(",")
         .enumerate()
-        .filter(|(i,a)| *a != "x")
+        .filter(|(_i, a)| *a != "x")
         .map(|(i, b)| { let n = b.parse().unwrap(); ((n - (i%n)) % n, n) })
         .collect();
-    req.sort_by_key(|(i, id)| -(*id as isize));
+    req.sort_by_key(|(_i, id)| -(*id as isize));
 
     println!("{:?}", req);
     let mut solution = 0;
     let mut increment = 1;
     let mut count = 0;
     while count < req.len() {
-        let mut found = true;
         for (a, n) in req[count..].iter() {
             if solution % n != *a {
-                found = false;
                 break;
             }
             count += 1;

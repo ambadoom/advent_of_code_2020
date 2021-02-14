@@ -2,8 +2,6 @@ use advent2020::input;
 
 use regex::Regex;
 
-use std::collections::HashMap;
-
 struct Field<'a> {
     name: &'a str,
     l1: usize,
@@ -113,7 +111,7 @@ fn main() {
         .enumerate()
         .map(|(i, fi)| (fields[*fi].name, our_ticket[i]))
         .filter(|(name, _)| name.starts_with("departure"))
-        .map(|(name, val)| val)
+        .map(|(_, val)| val)
         .product();
     println!("{}", solution);
     

@@ -266,7 +266,7 @@ fn main() {
     }
 
     let mut border_tiles = HashMap::new();
-    for (edge, tiles) in edges.iter() {
+    for (_edge, tiles) in edges.iter() {
         if tiles.len() == 1 {
             let c = border_tiles.entry(tiles[0]).or_insert(0);
             *c += 1;
